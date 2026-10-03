@@ -1,0 +1,55 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Baiseline Git & GitHub Guide</title><link rel="stylesheet" href="../developer-starter-pack/styles.css"></head><body><header class="hero wrap"><div class="eyebrow">BAISELINE • FREE REFERENCE</div><h1>Git & GitHub <span>Guide</span></h1><p>A practical workflow reference for repositories, branches, commits, remotes, pull requests, syncing, and recovering from common mistakes.</p><p><a class="button ghost" href="../../index.html#resources">← Free Resources</a></p></header><main class="grid wrap"><section class="card"><span class="tag">START</span><h2>Create or Clone</h2><pre>git init
+git status
+
+git clone https://github.com/OWNER/REPO.git
+cd REPO
+
+git remote -v</pre></section><section class="card"><span class="tag">DAILY</span><h2>Daily Workflow</h2><pre>git status
+git pull
+git switch -c feature/my-change
+# edit files
+git diff
+git add .
+git commit -m "Add useful change"
+git push -u origin feature/my-change</pre></section><section class="card"><span class="tag">BRANCHES</span><h2>Branch Commands</h2><pre>git branch
+git branch -a
+git switch main
+git switch -c feature/name
+git branch -d feature/name
+
+git fetch --prune</pre></section><section class="card"><span class="tag">INSPECT</span><h2>Understand Changes</h2><pre>git status
+git diff
+git diff --staged
+git log --oneline --decorate -10
+git show HEAD
+git blame path/to/file</pre></section><section class="card"><span class="tag">UNDO</span><h2>Safe Undo Patterns</h2><pre># discard unstaged file change
+git restore path/to/file
+
+# unstage but keep changes
+git restore --staged path/to/file
+
+# reverse a shared commit safely
+git revert COMMIT_SHA</pre><p>Avoid destructive reset/force operations unless you understand their effect on shared history.</p></section><section class="card"><span class="tag">SYNC</span><h2>Keep Current</h2><pre>git switch main
+git pull origin main
+
+git switch feature/my-change
+git merge main
+# resolve conflicts, then:
+git add .
+git commit</pre></section><section class="card"><span class="tag">CONFLICTS</span><h2>Merge Conflict Flow</h2><ol><li>Run <code>git status</code>.</li><li>Open conflicted files.</li><li>Choose/combine the correct changes.</li><li>Remove conflict markers.</li><li>Run tests.</li><li><code>git add</code> resolved files.</li><li>Complete the merge commit.</li></ol></section><section class="card"><span class="tag">PR</span><h2>Pull Request Checklist</h2><ul><li>Focused change with clear title.</li><li>Explain what changed and why.</li><li>Tests pass.</li><li>No secrets or generated junk.</li><li>Review the diff yourself first.</li><li>Address review comments.</li><li>Update docs when behavior changes.</li></ul></section><section class="card"><span class="tag">GITIGNORE</span><h2>Common Ignores</h2><pre>.env
+.venv/
+venv/
+__pycache__/
+.pytest_cache/
+node_modules/
+.DS_Store
+dist/
+build/</pre></section><section class="card"><span class="tag">COMMITS</span><h2>Better Commits</h2><pre># useful
+Add shipment validation
+Fix empty CSV header handling
+Document Docker setup
+
+# weak
+stuff
+changes
+fix</pre><p>Keep commits small enough to understand and messages specific enough to scan later.</p></section></main><footer class="footer"><div class="wrap"><b>BAISELINE</b> — Build smarter. Ship faster. © 2026 Baiseline.</div></footer></body></html>
