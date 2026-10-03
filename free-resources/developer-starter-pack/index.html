@@ -1,0 +1,50 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Baiseline Developer Starter Pack</title><link rel="stylesheet" href="styles.css"></head><body><header class="hero wrap"><div class="eyebrow">BAISELINE • FREE DEVELOPER RESOURCE</div><h1>Developer <span>Starter Pack</span></h1><p>A practical quick-reference for building real projects: Python, SQL, Git, APIs, Docker, terminal commands, environment configuration, debugging, and deployment.</p><p><a class="button" href="Baiseline_Developer_Starter_Pack.zip" download>Download Complete Pack ↓</a> <a class="button ghost" href="../../index.html">← Baiseline Home</a></p></header><main class="grid wrap"><section class="card"><span class="tag">PYTHON</span><h2>Python Quick Reference</h2><pre>names = ["Ana", "Sam"]
+user = {"name": "Ana", "active": True}
+
+for item in items:
+    print(item)
+
+clean = [x.strip() for x in rows if x]</pre></section><section class="card"><span class="tag">SQL</span><h2>SQL Quick Reference</h2><pre>SELECT id, name
+FROM customers
+WHERE active = TRUE
+ORDER BY name;
+
+SELECT carrier_id, COUNT(*) AS shipments
+FROM shipments
+GROUP BY carrier_id;</pre><p>Use parameterized queries instead of concatenating user input into SQL.</p></section><section class="card"><span class="tag">GIT</span><h2>Git & GitHub</h2><pre>git status
+git switch -c feature/my-change
+git add .
+git commit -m "Add feature"
+git push -u origin feature/my-change
+
+git pull
+git log --oneline --decorate -10
+git diff</pre></section><section class="card"><span class="tag">API</span><h2>API & HTTP</h2><ul><li><b>GET</b> — read data</li><li><b>POST</b> — create</li><li><b>PUT/PATCH</b> — update</li><li><b>DELETE</b> — remove</li></ul><pre>200 OK          201 Created
+204 No Content  400 Bad Request
+401 Unauthorized
+403 Forbidden   404 Not Found
+422 Unprocessable Content
+500 Server Error</pre></section><section class="card"><span class="tag">TERMINAL</span><h2>Terminal Essentials</h2><pre>pwd             # current directory
+ls -la          # list files
+cd path          # change directory
+mkdir project    # create directory
+cp source dest   # copy
+mv old new       # move/rename
+grep -R "text" . # search text</pre></section><section class="card"><span class="tag">DOCKER</span><h2>Docker Basics</h2><pre>docker --version
+docker build -t my-app .
+docker run --rm -p 8000:8000 my-app
+docker compose config
+docker compose up -d
+docker compose ps
+docker compose logs
+docker compose down</pre></section><section class="card"><span class="tag">CONFIG</span><h2>Environment & Secrets</h2><pre># .env.example
+DATABASE_URL=postgresql://user:password@localhost/app
+API_KEY=replace_me
+APP_ENV=development</pre><p>Commit <code>.env.example</code>, not your real <code>.env</code>.</p></section><section class="card"><span class="tag">STRUCTURE</span><h2>Clean Project Structure</h2><pre>my-project/
+├── src/
+├── tests/
+├── docs/
+├── .env.example
+├── .gitignore
+├── README.md
+└── requirements.txt</pre></section><section class="card full"><span class="tag">CHECKLIST</span><h2>Project Start → Ship Checklist</h2><ul><li>Define the problem and smallest useful scope.</li><li>Create repository and README.</li><li>Use an isolated environment and document dependencies.</li><li>Keep secrets outside source control.</li><li>Add validation and useful error handling.</li><li>Write tests for core behavior and important edge cases.</li><li>Run tests after changes and fix failures.</li><li>Test setup from a clean environment.</li><li>Document install, configuration, usage, examples, and troubleshooting.</li><li>Check security basics and production configuration.</li></ul></section><section class="card"><span class="tag">DEBUG</span><h2>Debugging Checklist</h2><ol><li>Read the complete error.</li><li>Reproduce it consistently.</li><li>Reduce it to the smallest failing case.</li><li>Check inputs, types, paths, config, and environment variables.</li><li>Fix the cause, not just the symptom.</li><li>Add a regression test and rerun the suite.</li></ol></section><section class="card"><span class="tag">DEPLOY</span><h2>Deployment Checklist</h2><ul><li>Tests pass.</li><li>No secrets are committed.</li><li>Production variables are documented.</li><li>Database migrations are ready.</li><li>Health check works.</li><li>Logs avoid sensitive data.</li><li>Build is reproducible.</li><li>README reflects the shipped version.</li></ul></section></main><footer class="footer"><div class="wrap"><b>BAISELINE</b> — Build smarter. Ship faster. © 2026 Baiseline.</div></footer></body></html>
