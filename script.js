@@ -9,6 +9,10 @@ document.querySelectorAll('[data-coming]').forEach(a=>a.addEventListener('click'
   setTimeout(()=>toast.classList.remove('show'),1800);
 }));
 document.querySelectorAll('.chips button').forEach(b=>b.addEventListener('click',()=>{
+  if(b.textContent.trim()==='Developer Starter Pack'){
+    window.location.href='free-resources/developer-starter-pack/';
+    return;
+  }
   toast.textContent=`${b.textContent} — coming soon.`;
   toast.classList.add('show');
   setTimeout(()=>{
