@@ -1,0 +1,63 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Baiseline SQL Reference</title><link rel="stylesheet" href="../developer-starter-pack/styles.css"></head><body><header class="hero wrap"><div class="eyebrow">BAISELINE • FREE REFERENCE</div><h1>SQL <span>Reference</span></h1><p>Practical SQL patterns for querying, joining, aggregating, modifying, and safely working with relational data.</p><p><a class="button ghost" href="../../index.html#resources">← Free Resources</a></p></header><main class="grid wrap"><section class="card"><span class="tag">SELECT</span><h2>Read & Filter</h2><pre>SELECT id, name, status
+FROM shipments
+WHERE status = 'DELIVERED'
+  AND weight_kg > 100
+ORDER BY name
+LIMIT 25;</pre></section><section class="card"><span class="tag">AGGREGATE</span><h2>Group & Measure</h2><pre>SELECT carrier_id,
+       COUNT(*) AS shipments,
+       AVG(weight_kg) AS avg_weight
+FROM shipments
+GROUP BY carrier_id
+HAVING COUNT(*) >= 5
+ORDER BY shipments DESC;</pre></section><section class="card"><span class="tag">JOINS</span><h2>Combine Tables</h2><pre>SELECT s.id, c.carrier_name
+FROM shipments AS s
+JOIN carriers AS c
+  ON c.carrier_id = s.carrier_id;
+
+-- Keep unmatched left rows
+SELECT * FROM a
+LEFT JOIN b ON b.a_id = a.id;</pre></section><section class="card"><span class="tag">WRITE</span><h2>Insert, Update, Delete</h2><pre>INSERT INTO carriers (name, active)
+VALUES ('Acme Freight', TRUE);
+
+UPDATE carriers
+SET active = FALSE
+WHERE id = 7;
+
+DELETE FROM temp_rows
+WHERE created_at < CURRENT_DATE - INTERVAL '30 days';</pre></section><section class="card"><span class="tag">DDL</span><h2>Create Tables</h2><pre>CREATE TABLE carriers (
+  carrier_id BIGSERIAL PRIMARY KEY,
+  carrier_name TEXT NOT NULL,
+  active BOOLEAN NOT NULL DEFAULT TRUE,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);</pre></section><section class="card"><span class="tag">CONSTRAINTS</span><h2>Protect Data</h2><pre>email TEXT UNIQUE NOT NULL,
+weight_kg NUMERIC CHECK (weight_kg > 0),
+carrier_id BIGINT REFERENCES carriers(carrier_id),
+status TEXT CHECK (status IN (
+  'PENDING','IN_TRANSIT','DELIVERED','CANCELLED'
+))</pre></section><section class="card"><span class="tag">NULL</span><h2>NULL & CASE</h2><pre>SELECT COALESCE(delay_minutes, 0)
+FROM shipments;
+
+SELECT CASE
+  WHEN delay_minutes > 60 THEN 'LATE'
+  WHEN delay_minutes > 0 THEN 'DELAYED'
+  ELSE 'ON_TIME'
+END AS performance
+FROM shipments;</pre></section><section class="card"><span class="tag">CTE</span><h2>CTEs</h2><pre>WITH delivered AS (
+  SELECT *
+  FROM shipments
+  WHERE status = 'DELIVERED'
+)
+SELECT carrier_id, COUNT(*)
+FROM delivered
+GROUP BY carrier_id;</pre></section><section class="card"><span class="tag">TRANSACTION</span><h2>Transactions</h2><pre>BEGIN;
+
+UPDATE accounts
+SET balance = balance - 100
+WHERE id = 1;
+
+UPDATE accounts
+SET balance = balance + 100
+WHERE id = 2;
+
+COMMIT;
+-- ROLLBACK; on failure</pre></section><section class="card"><span class="tag">SAFETY</span><h2>SQL Habits</h2><ul><li>Use parameterized queries for user input.</li><li>Use constraints to enforce important rules.</li><li>Index columns used frequently for filtering/joining after measuring.</li><li>Preview rows before destructive updates/deletes.</li><li>Use transactions for related writes.</li><li>Back up important data before risky migrations.</li></ul></section></main><footer class="footer"><div class="wrap"><b>BAISELINE</b> — Build smarter. Ship faster. © 2026 Baiseline.</div></footer></body></html>
