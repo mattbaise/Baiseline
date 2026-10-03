@@ -1,0 +1,61 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Baiseline Python Cheat Sheet</title><link rel="stylesheet" href="../developer-starter-pack/styles.css"></head><body><header class="hero wrap"><div class="eyebrow">BAISELINE • FREE REFERENCE</div><h1>Python <span>Cheat Sheet</span></h1><p>Fast reference for everyday Python: collections, control flow, functions, files, errors, comprehensions, environments, and testing.</p><p><a class="button ghost" href="../../index.html#resources">← Free Resources</a></p></header><main class="grid wrap"><section class="card"><span class="tag">BASICS</span><h2>Variables & Types</h2><pre>name = "Baiseline"
+count = 10
+price = 19.99
+active = True
+nothing = None
+
+print(type(name))
+print(f"{name}: {count}")</pre></section><section class="card"><span class="tag">COLLECTIONS</span><h2>Lists, Dicts, Sets</h2><pre>items = ["api", "sql", "docker"]
+items.append("git")
+first = items[0]
+
+user = {"name": "Sam", "active": True}
+name = user.get("name")
+
+unique = {1, 2, 2, 3}</pre></section><section class="card"><span class="tag">FLOW</span><h2>Conditions & Loops</h2><pre>if score >= 90:
+    grade = "A"
+elif score >= 80:
+    grade = "B"
+else:
+    grade = "C"
+
+for i, item in enumerate(items):
+    print(i, item)
+
+while running:
+    do_work()</pre></section><section class="card"><span class="tag">FUNCTIONS</span><h2>Functions</h2><pre>def total(values: list[float]) -> float:
+    return sum(values)
+
+def greet(name="Developer"):
+    return f"Hello, {name}!"
+
+square = lambda x: x * x</pre></section><section class="card"><span class="tag">COMPREHENSIONS</span><h2>Compact Transformations</h2><pre>squares = [n*n for n in range(10)]
+positive = [n for n in nums if n > 0]
+lookup = {u["id"]: u for u in users}
+unique = {x.lower() for x in names}</pre></section><section class="card"><span class="tag">FILES</span><h2>Files & JSON</h2><pre>from pathlib import Path
+import json
+
+text = Path("notes.txt").read_text()
+Path("out.txt").write_text("done")
+
+data = json.loads(Path("data.json").read_text())</pre></section><section class="card"><span class="tag">ERRORS</span><h2>Error Handling</h2><pre>try:
+    value = int(raw)
+except ValueError as exc:
+    print(f"Invalid number: {exc}")
+else:
+    print(value)
+finally:
+    cleanup()</pre></section><section class="card"><span class="tag">ENV</span><h2>Virtual Environment</h2><pre>python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install pytest
+python -m pip freeze > requirements.txt
+
+deactivate</pre></section><section class="card"><span class="tag">TESTING</span><h2>Pytest</h2><pre># test_math.py
+def add(a, b):
+    return a + b
+
+def test_add():
+    assert add(2, 3) == 5
+
+# run
+pytest -q</pre></section><section class="card"><span class="tag">GOOD HABITS</span><h2>Practical Checklist</h2><ul><li>Use clear names and small functions.</li><li>Validate external input.</li><li>Use <code>pathlib</code> for portable paths.</li><li>Keep secrets in environment variables.</li><li>Catch specific exceptions.</li><li>Write regression tests for bugs.</li><li>Use a virtual environment per project.</li></ul></section></main><footer class="footer"><div class="wrap"><b>BAISELINE</b> — Build smarter. Ship faster. © 2026 Baiseline.</div></footer></body></html>
