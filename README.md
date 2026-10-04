@@ -31,7 +31,7 @@ Baiseline currently includes four free resources:
 
 ## Baiseline products
 
-The storefront is being expanded with developer-focused products spanning automation, reporting, backend development, databases, DevOps, AI, and data workflows. Product pages and checkout links will be connected as releases go live.
+The website connects 20 published Baiseline products on Gumroad, including ten developer starter releases. Each card links to its product page with current launch pricing. Browse the [Baiseline storefront](https://mattitude84772.gumroad.com/) for downloads, narrated demos, requirements and license terms.
 
 ## Custom development
 
